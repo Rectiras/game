@@ -57,4 +57,8 @@ public class TournamentGroup {
     public boolean isFull() {
         return members.size() == 5;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

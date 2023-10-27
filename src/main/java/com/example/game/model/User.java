@@ -10,12 +10,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
+    private String username;
     private int coins = 5000;
     private int level = 1;
     private final String country;
     private int tournamentScore = 0;
     private boolean inTournament = false;
     private boolean tournamentRewardsClaimed = true;
+
+    private int tournamentReward = 0;
 
     @ManyToOne
     @JoinColumn(name = "tournament_group_id")
@@ -31,6 +35,11 @@ public class User {
     }
 
     // Getters and setters for coins, level, and country
+    public Long getId() {
+        return id;
+    }
+    public String getUsername() { return username; }
+
     public int getCoins() {
         return coins;
     }
@@ -82,5 +91,17 @@ public class User {
 
     public TournamentGroup getTournamentGroup() {
         return tournamentGroup;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getTournamentReward() {
+        return tournamentReward;
+    }
+
+    public void setTournamentReward(int tournamentReward) {
+        this.tournamentReward = tournamentReward;
     }
 }

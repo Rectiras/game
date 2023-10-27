@@ -10,8 +10,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User createUser() {
+    public User createUser(String username) {
         User newUser = new User();
+        newUser.setUsername(username);
         return userRepository.save(newUser);
     }
 

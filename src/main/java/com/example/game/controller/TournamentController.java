@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.http.ResponseEntity;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/tournament")
 public class TournamentController {
@@ -14,7 +17,7 @@ public class TournamentController {
     private TournamentService tournamentService;
 
     @PostMapping("/enter/{userId}")
-    public String enterTournament(@PathVariable Long userId) {
+    public ResponseEntity<Map<String, Object>> enterTournament(@PathVariable Long userId) {
         return tournamentService.enterTournament(userId);
     }
 
