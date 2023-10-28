@@ -5,6 +5,10 @@ import com.example.game.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
+
 @Service
 public class UserService {
     @Autowired
@@ -13,6 +17,11 @@ public class UserService {
     public User createUser(String username) {
         User newUser = new User();
         newUser.setUsername(username);
+
+        // Adjust availableTournament based on UTC time
+        boolean isTournamentAvailable = isTournamentAvailableNow();
+        newUser.setAvailableTournament(isTournamentAvailable);
+
         return userRepository.save(newUser);
     }
 
@@ -30,5 +39,16 @@ public class UserService {
             return userRepository.save(user);
         }
         return null;
+    }
+
+    public boolean isTournamentAvailableNow() {
+        // Get the current time in UTC
+        Instant now = Instant.now();
+        LocalTime localTime = now.atZone(ZoneOffset.UTC).toLocalTime();
+
+        // Check if the time is between 20:00 and 00:00 UTC
+        boolean isAvailable = localTime.isBefore(LocalTime.of(20, 0)) && localTime.isAfter(LocalTime.of(0, 0));
+
+        return isAvailable;
     }
 }
