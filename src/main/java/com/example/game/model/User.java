@@ -21,6 +21,8 @@ public class User {
 
     private int tournamentReward = 0;
 
+    private boolean availableTournament = true;
+
     @ManyToOne
     @JoinColumn(name = "tournament_group_id")
     @JsonIgnore // Ignore serialization of this field otherwise causes infinite loop because of referencing back and forth
@@ -103,5 +105,13 @@ public class User {
 
     public void setTournamentReward(int tournamentReward) {
         this.tournamentReward = tournamentReward;
+    }
+
+    public boolean isAvailableTournament() {
+        return availableTournament;
+    }
+
+    public void setAvailableTournament(boolean availableTournament) {
+        this.availableTournament = availableTournament;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.game.controller;
 
+import com.example.game.model.CountryLeaderboardEntry;
 import com.example.game.model.LeaderboardEntry;
+import com.example.game.service.CountryLeaderboardService;
 import com.example.game.service.LeaderboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,14 @@ public class LeaderboardController {
     @GetMapping("/group/{groupId}")
     public List<LeaderboardEntry> getGroupLeaderboard(@PathVariable Long groupId) {
         return leaderboardService.getGroupLeaderboard(groupId);
+    }
+
+    @Autowired
+    private CountryLeaderboardService countryLeaderboardService;
+
+    @GetMapping("/country")
+    public List<CountryLeaderboardEntry> getCountryLeaderboard() {
+        return countryLeaderboardService.getCountryLeaderboard();
     }
 }
 

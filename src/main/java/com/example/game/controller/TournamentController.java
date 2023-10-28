@@ -22,7 +22,7 @@ public class TournamentController {
     }
 
     @PostMapping("/claimReward/{userId}")
-    public String claimTournamentReward(@PathVariable Long userId) {
+    public ResponseEntity<Map<String, Object>> claimTournamentReward(@PathVariable Long userId) {
         return tournamentService.claimTournamentReward(userId);
     }
 

@@ -10,7 +10,7 @@ public class TournamentGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "tournamentGroup")
+    @OneToMany(mappedBy = "tournamentGroup", fetch = FetchType.EAGER)
     private List<User> members = new ArrayList<>();
 
     private boolean groupFull;
