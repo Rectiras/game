@@ -70,5 +70,5 @@ UNIQUE KEY `id` (`id`)
 - (**POST**) Enter Tournament: http://localhost:8080/api/tournament/enter/userId
 - (**POST**) Claim Reward: http://localhost:8080/api/tournament/claimReward/userId
 - (**GET**) Group Leaderboard: http://localhost:8080/api/leaderboard/group/groupId
-- (**GET**) Claim Reward: http://localhost:8080/api/users/getGroupRank/userId
-- (**GET**) Claim Reward: http://localhost:8080/api/leaderboard/country
+- (**GET**) Group Rank: http://localhost:8080/api/users/getGroupRank/userId
+- (**GET**) Country Leaderboard: http://localhost:8080/api/leaderboard/country
