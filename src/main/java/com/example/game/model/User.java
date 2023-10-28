@@ -62,6 +62,10 @@ public class User {
         return tournamentScore;
     }
 
+    public void setTournamentScore(int tournamentScore) {
+        this.tournamentScore = tournamentScore;
+    }
+
     public void incrementTournamentScore(int tournamentScore) {
         this.tournamentScore = tournamentScore;
     }

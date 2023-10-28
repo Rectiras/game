@@ -25,17 +25,33 @@ public class UserServiceTests {
 
     @Before
     public void setUp() {
-        // You can set up test data or perform any necessary setup here
+        // Set up test data or perform any necessary setup here
     }
 
     @Test
     public void testCreateUser() {
-        // Test the createUser method
         User user = userService.createUser("testUser");
         assertNotNull(user);
         assertEquals("testUser", user.getUsername());
+
+        // Print the response
+        System.out.println("Response: " + user);
     }
 
-    // Add more test methods for other service methods
+    @Test
+    public void testUpdateLevel() {
+        // Create a user
+        User user = userService.createUser("testUser");
+
+        // Update user's level
+        User updatedUser = userService.updateLevel(user.getId());
+
+        assertNotNull(updatedUser);
+        assertEquals(user.getLevel() + 1, updatedUser.getLevel());
+        assertEquals(user.getCoins() + 25, updatedUser.getCoins());
+
+        // Print the response
+        System.out.println("Response: " + updatedUser);
+    }
 
 }
